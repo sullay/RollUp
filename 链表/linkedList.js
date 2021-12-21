@@ -99,17 +99,53 @@ class LinkedList {
     }
     return isCricle
   }
+  // 有序链表合并
+  static mergeList(list1, list2) {
+    if (!list1 || !list2 || list1.constructor !== LinkedList || list2.constructor !== LinkedList) {
+      return -1
+    }
+    let root = new LinkedList()
+    let currentNode = root.head
+    let currentNode_1 = list1.head.next
+    let currentNode_2 = list2.head.next
+    while (currentNode_1 || currentNode_2) {
+      if (!currentNode_1 || (currentNode_2.element < currentNode_1.element)) {
+        currentNode.next = currentNode_2
+        currentNode_2 = currentNode_2.next
+      } else if (!currentNode_2 || (currentNode_1.element <= currentNode_2.element)) {
+        currentNode.next = currentNode_1
+        currentNode_1 = currentNode_1.next
+      }
+      currentNode = currentNode.next
+    }
+    return root
+  }
 }
 
-let list = new LinkedList()
-list.push(10)
-list.push(9)
-list.push(8)
-list.push(7)
+// let list = new LinkedList()
+// list.push(10)
+// list.push(9)
+// list.push(8)
+// list.push(7)
 // console.log(list.toString())
 // console.log(list.findByValue(9))
 // console.log(list.findByIndex(1))
 // list.reverse()
 // console.log(list.toString())
-list.head.next.next.next.next.next = list.head.next
-console.log(list.checkCircle(), list.getCircleImport())
+
+// list.head.next.next.next.next.next = list.head.next
+// console.log(list.checkCircle(), list.getCircleImport())
+
+let list1 = new LinkedList()
+list1.push(1)
+list1.push(4)
+list1.push(8)
+list1.push(20)
+
+let list2 = new LinkedList()
+list2.push(4)
+list2.push(6)
+list2.push(11)
+list2.push(50)
+
+console.log(LinkedList.mergeList(list1, list2).toString())
