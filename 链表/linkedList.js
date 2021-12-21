@@ -52,12 +52,64 @@ class LinkedList {
     }
     return res
   }
+  // 单链表反转
+  reverse() {
+    let root = new Node('head')
+    let currentNode = this.head.next
+    while (currentNode) {
+      let next = currentNode.next
+      currentNode.next = root.next
+      root.next = currentNode
+      currentNode = next
+    }
+    this.head = root
+  }
+  // 环检测
+  checkCircle() {
+    let fast = this.head.next
+    let slow = this.head.next
+    while (fast && fast.next) {
+      fast = fast.next.next
+      slow = slow.next
+      if (fast === slow) {
+        return true
+      }
+    }
+    return false
+  }
+  // 求环入口
+  getCircleImport() {
+    let isCricle = false
+    let fast = this.head.next
+    let slow = this.head.next
+    while (fast && fast.next && !isCricle) {
+      fast = fast.next.next
+      slow = slow.next
+      if (fast === slow) {
+        isCricle = true
+      }
+    }
+    if (isCricle) {
+      fast = this.head.next
+      while (fast !== slow) {
+        fast = fast.next
+        slow = slow.next
+      }
+      return fast
+    }
+    return isCricle
+  }
 }
 
 let list = new LinkedList()
 list.push(10)
 list.push(9)
 list.push(8)
-console.log(list.toString())
-console.log(list.findByValue(22))
-console.log(list.findByIndex(-2))
+list.push(7)
+// console.log(list.toString())
+// console.log(list.findByValue(9))
+// console.log(list.findByIndex(1))
+// list.reverse()
+// console.log(list.toString())
+list.head.next.next.next.next.next = list.head.next
+console.log(list.checkCircle(), list.getCircleImport())
