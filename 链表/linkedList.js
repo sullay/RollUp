@@ -120,6 +120,27 @@ class LinkedList {
     }
     return root
   }
+  // 删除链表倒数第n个节点
+  removeByIndex(n) {
+    if (this.checkCircle()) {
+      return this
+    }
+    let index = -1
+    let currentNode = this.head.next
+    while (currentNode) {
+      index++
+      currentNode = currentNode.next
+    }
+    if (n > index) {
+      return this
+    }
+    currentNode = this.head
+    for (let i = 0; i < index - n; i++) {
+      currentNode = currentNode.next
+    }
+    currentNode.next = currentNode.next.next
+    return this
+  }
 }
 
 // let list = new LinkedList()
@@ -148,4 +169,6 @@ list2.push(6)
 list2.push(11)
 list2.push(50)
 
-console.log(LinkedList.mergeList(list1, list2).toString())
+// console.log(LinkedList.mergeList(list1, list2).toString())
+
+console.log(list1.removeByIndex(4).toString())
