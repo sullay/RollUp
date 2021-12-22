@@ -141,6 +141,19 @@ class LinkedList {
     currentNode.next = currentNode.next.next
     return this
   }
+  // 寻找中间节点
+  findMiddleNode() {
+    let fast = this.head
+    let slow = this.head
+    while (fast && fast.next) {
+      fast = fast.next.next
+      slow = slow.next
+    }
+    if (fast) {
+      slow = slow.next
+    }
+    return slow
+  }
 }
 
 // let list = new LinkedList()
@@ -172,3 +185,4 @@ list2.push(50)
 // console.log(LinkedList.mergeList(list1, list2).toString())
 
 console.log(list1.removeByIndex(4).toString())
+console.log(list1.findMiddleNode())
