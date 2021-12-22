@@ -46,16 +46,18 @@ class Stack {
   }
 }
 
-let stack = new Stack();
+// let stack = new Stack();
 
-stack.push('a')
-stack.push('b')
-stack.push('c')
+// stack.push('a')
+// stack.push('b')
+// stack.push('c')
 
-stack.display()
-console.log(stack.length)
+// stack.display()
+// console.log(stack.length)
 // console.log(stack.pop(), stack.length)
 // console.log(stack.pop(), stack.length)
 // console.log(stack.pop(), stack.length)
 // console.log(stack.pop(), stack.length)
 // stack.display()
+
+exports.Stack = Stack
