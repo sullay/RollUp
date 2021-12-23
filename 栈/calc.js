@@ -41,4 +41,40 @@ function change(string) {
   return res
 }
 
+function calc(string) {
+  let tempString = change(string)
+  let numStack = new Stack()
+  for (let s of tempString) {
+    if (['+', '-', '*', '/'].includes(s)) {
+      let num1 = numStack.pop()
+      let num2 = numStack.pop()
+      if (num1 === null || num2 === null) {
+        return
+      }
+      switch (s) {
+        case '+':
+          numStack.push(num2 + num1)
+          break;
+        case '-':
+          numStack.push(num2 - num1)
+          break;
+        case '*':
+          numStack.push(num2 * num1)
+          break;
+        case '/':
+          numStack.push(num2 / num1)
+          break;
+        default:
+          break;
+      }
+    } else {
+      numStack.push(~~s)
+    }
+  }
+  return numStack.pop()
+}
+
 change('a+b*c+(d*e+f)*g')
+console.log(calc('1+2*(3-5)+6*7'))
+
+console.log(calc('(1+2)*5'))
