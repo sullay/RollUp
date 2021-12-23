@@ -44,6 +44,12 @@ class Stack {
       temp = temp.next
     }
   }
+  getTop() {
+    if (this.length <= 0) {
+      return null
+    }
+    return this.top.element
+  }
 }
 
 // let stack = new Stack();
