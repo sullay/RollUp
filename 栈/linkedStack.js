@@ -23,8 +23,8 @@ class Stack {
   }
 
   pop() {
-    if (!this.top) {
-      return -1
+    if (this.length <= 0) {
+      return null
     }
     let temp = this.top.element
     this.top = this.top.next
