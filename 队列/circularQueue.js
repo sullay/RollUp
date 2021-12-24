@@ -22,7 +22,7 @@ class CircularQueue {
       return null
     }
     let res = this.queue[this.head]
-    this.queue[this.head] = null
+    this.queue[this.head] = null // 实际实现不需要  方便查看
     this.head++
     if (this.head >= this.n) {
       this.head = 0
