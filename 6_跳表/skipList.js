@@ -1,4 +1,4 @@
-// 眺表
+// 跳表
 const MAX_LEVEL = 16; //最大层级
 
 class Node {
