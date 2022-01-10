@@ -1,4 +1,6 @@
 // 堆排序（大顶堆）
+// 不稳定原地排序
+// 时间复杂度：O(logn)
 class Heap {
   constructor(arr) {
     this.arr = arr || [];
